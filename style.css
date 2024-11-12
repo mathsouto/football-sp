@@ -1,0 +1,1320 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #3a3a3a;
+    margin: 0 auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    min-width: 185px;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+/* Line */
+.line {
+    display: flex;
+    justify-content: space-between;
+    margin: 10% 0;
+}
+
+.lineMedium, .lineSmall, .lineFull {
+    height: 2px;
+    background-color: #E34646;
+}
+
+.lineMedium {
+    width: 35%;
+}
+
+.lineSmall {
+    width: 20%;
+}
+
+.lineFull {
+    width: 100%;
+}
+
+.lineFooter {
+    height: 2px;
+    background-color: #E34646;
+    margin: 20px 0;
+    width: 50%;
+    max-width: 500px;
+    min-width: 50px;
+}
+
+/* Header */
+.headerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 140px;
+}
+
+.headerMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 7%;
+}
+
+.headerMin{
+    display: none;
+}
+
+.headerMenu a, .headerMenu span {
+    text-decoration: none;
+    color: white;
+    font-size: clamp(26px, 1.5vw, 32px);
+    font-family: "JetBrains Mono", monospace;
+    transition: ease-in-out 0.3s all;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.headerMenu span { 
+    color: #E34646;
+}
+
+.headerMenu img {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: ease-in-out 0.3s all;
+}
+
+.headerNav {
+    position: fixed;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    right: -200px;
+    background-color: #202020ef;
+    transition: right 0.3s ease;
+    z-index: 1001;
+}
+
+.headerNav.show {
+    right: 0;
+}
+
+.headerNavTop {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97px;
+    width: 100%;
+}
+
+.headerNavBG {
+    background-color: #2e2e2ef5;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.headerNavTop img {
+    position: relative;
+    z-index: 2;
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.headerNavMenu {
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    padding-right: 20%;
+    height: calc(100vh - 97px);
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.headerNavMenu::-webkit-scrollbar {
+    width: 0; /* Retira a barra de rolagem no Webkit (Chrome, Safari) */
+}
+
+.headerNavMenu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    list-style: none;
+}
+
+.headerNavMenu ul.hide {
+    display: none;
+}
+
+.headerNavMenu ul li {
+    margin: 20px 0;
+}
+
+.headerNavMenu ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    font-size: clamp(13px, 1.5vw, 16px);
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+.headerNavMenuClube:hover::before {
+    content: "\3C";
+    margin-right: 5px;
+    color: #E34646;
+}
+
+.headerNavMenu ul li i {
+    margin-left: 15px;
+    font-size: clamp(16px, 1.5vw, 19px);
+    color: #ebebeb;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.lineMenu {
+    width: 50%;
+    height: 2px;
+    background-color: #5c5c5c7e;
+    margin: 50px 0;
+}
+
+.headerNavMenuEscudos ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    padding: 0;
+    margin: 0 auto;
+    margin-left: 40%;
+}
+
+.headerNavMenuEscudos ul li {
+    list-style: none;
+}
+
+.headerNavMenuEscudos .backButton {
+    color: white;
+    font-size: 16px;
+    margin-left: 10%;
+}
+
+.headerNavMenuEscudos img {
+    /* width: 30px; */
+    /* height: auto; */
+    filter: saturate(10%);
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 1000;
+}
+
+#overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Main HOME */
+.sectionOne {
+    height: 100vh;
+    width: 0 auto;
+}
+
+.sectionOneContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    height: 60vh;
+    margin: 0 auto;
+}
+
+.sectionOne h1 {
+    color: white;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 300;
+    text-shadow: 4px 1px 14px rgba(0, 0, 0, 0.55);
+    font-size: clamp(30px, 1.5vw, 43px);
+}
+
+.sectionOneH1 {
+    color: #E34646;
+    font-family: "JetBrains Mono", monospace;
+    margin-left: 5px;
+}
+
+.sectionOneH1::after {
+    content: "|";
+    opacity: 1;
+    margin-left: 2px;
+    animation: pisca 0.7s infinite;
+}
+
+@keyframes pisca {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* .sectionOneAnimation {
+    width: 20%;
+    height: auto;
+    position: relative;
+}
+
+.flip-image {
+    width: 100%;
+    height: auto;
+    transition: transform 1s;
+    animation: zoom 2s ease-in-out infinite;
+}
+
+@keyframes zoom {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+} */
+
+.sectionOneBG {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    z-index: -1;
+    background-image: url('./assets/imgs/BGFirstHome.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.sectionTwo {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.sectionTwoTitle {
+    margin-bottom: 20px;
+}
+
+.sectionTwoContainer p, .sectionTwoContainer span {
+    color: white;
+    font-family: "IM Fell DW Pica SC", serif;
+    font-size: clamp(23px, 1.5vw, 26px);
+    font-weight: lighter;
+}
+
+.sectionTwoContainer span {
+    color: #E34646;
+    font-size: clamp(23px, 1.5vw, 26px);
+}
+
+.sectionTwoBox {
+    display: flex;
+}
+
+.sectionTwoBox .sectionTwoText {
+    text-align: justify;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    padding-right: 10%;
+}
+
+.sectionTwoIMG {
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionTwoIMG img {
+    width: 100%;
+    min-width: 200px;
+    height: auto;
+    cursor: pointer;
+    transition: ease-in-out 0.3s all;
+}
+
+.sectionTwoIMG p {
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: clamp(9px, 1.5vw, 11px);
+    font-weight: 200;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.sectionTwoIMG span {
+    font-family: "Inter", sans-serif;
+    color: #E34646;
+    font-size: clamp(9px, 1.5vw, 11px);
+    font-weight: 200;
+}
+
+.sectionThree {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.sectionThreeTitle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sectionThreeContainer p, .sectionThreeContainer span {
+    color: white;
+    font-family: "IM Fell DW Pica SC", serif;
+    font-size: clamp(23px, 1.5vw, 26px);
+    font-weight: lighter;
+}
+
+.sectionThreeContainer span {
+    color: #E34646;
+    font-size: clamp(23px, 1.5vw, 26px);
+}
+
+.sectionThreeBox {
+    display: flex;
+}
+
+.sectionThreeIMG img {
+    width: 100%;
+    min-width: 320px;
+    height: auto;
+    cursor: pointer;
+    transition: ease-in-out 0.3s all;
+}
+
+.sectionThreeIMG p {
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: clamp(9px, 1.5vw, 11px);
+    font-weight: 200;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.sectionThreeTexts p {
+    text-align: justify;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    padding-left: 10%;
+}
+
+.sectionThreeIMG span {
+    font-family: "Inter", sans-serif;
+    color: #E34646;
+    font-size: clamp(9px, 1.5vw, 11px);
+    font-weight: 200;
+}
+
+.sectionThreeText {
+    margin-bottom: 12px;
+}
+
+.sectionThreeTexts2 {
+    margin-top: 20px;
+}
+
+.sectionThreeTexts2 p {
+    text-align: justify;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+}
+
+.sectionFour {
+    max-width: 60%;
+    margin: 0 auto;
+}
+
+.sectionFourTitle {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sectionFourContainer p, .sectionFourContainer span {
+    color: white;
+    font-family: "IM Fell DW Pica SC", serif;
+    font-size: clamp(23px, 1.5vw, 26px);
+    font-weight: lighter;
+}
+
+.sectionFourContainer span {
+    color: #E34646;
+    font-size: clamp(23px, 1.5vw, 26px);
+}
+
+.sectionFourSlider {
+    margin: 0 auto;
+    width: 30vw;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.sectionFourSlides {
+    width: 400%; /* Este valor é alto, pode ser otimizado */
+    height: auto;
+    display: flex;
+}
+
+.sectionFourSlides input[type="radio"] {
+    display: none;
+}
+
+.slide {
+    width: 25%;
+    position: relative;
+    transition: 0.5s;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.manual-navigation {
+    position: absolute;
+    width: 30vw;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid white;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.manual-btn.active {
+    background-color: #E34646;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 25px;
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+    margin-left: -25%;
+}
+
+#radio3:checked ~ .first {
+    margin-left: -50%;
+}
+
+#radio4:checked ~ .first {
+    margin-left: -75%;
+}
+
+.sectionFourContainer .sectionFourText{
+    margin-top: 20px;
+    text-align: center;
+    font-size: clamp(12px, 1.5vw, 15px);
+    font-family: "Inter", sans-serif;
+    font-weight: 100;
+}
+
+.mainBG {
+    background-image: url('./assets/imgs/BGMain.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.sectionFinal {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-image: url('./assets/imgs/BGFinalHome.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sectionFinalContainer {
+    position: relative;
+    max-width: 60%;
+    width: 100%;
+}
+
+.sectionFinalBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionFinalTitle {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+    font-family: "IM Fell DW Pica SC", serif;
+    font-size: clamp(23px, 1.5vw, 26px);
+    font-weight: lighter;
+}
+
+.sectionFinalTitle span {
+    color: #E34646;
+    font-family: "IM Fell DW Pica SC", serif;
+    font-size: clamp(23px, 1.5vw, 26px);
+}
+
+.sectionFinalIcons {
+    display: flex;
+    margin: 150px 0;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.sectionFinalIcons a{
+    margin: 0 3vw;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sectionFinalIcons a img {
+    width: 80px;
+    height: auto;
+    filter: saturate(10%);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.sectionFinalText {
+    font-family: "Inter", sans-serif;
+    color: white;
+    text-align: center;
+    font-size: clamp(12px, 1.5vw, 15px);
+    font-weight: 200;
+    text-shadow: 4px 1px 14px rgb(0, 0, 0);
+}
+
+.footerContainer {
+    width: 100%;
+    height: 150px;
+    background-color: #262626;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerIcons {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.footerIcons .icon {
+    width: clamp(25px, 2vw, 30px);
+    height: auto;
+    margin: 0 1.5vw;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+    
+
+.footerText {
+    color: white;
+    font-size: clamp(9px, 1.5vw, 11px);
+    font-family: "JetBrains Mono", monospace;
+    font-weight: lighter;
+}
+
+/* Clubes */
+.sectionOneBGSPFC, .sectionOneBGSCCP, .sectionOneBGAPD {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.sectionFinalSPFC, .sectionFinalSCCP, .sectionFinalAPD {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sectionOneBGSPFC {
+    background-image: url('./assets/imgs/BGFirstSPFC.png');
+}
+
+.sectionFinalSPFC {
+    background-image: url('./assets/imgs/BGFinalSPFC.png');
+}
+
+.sectionOneBGSCCP {
+    background-image: url('./assets/imgs/BGFirstSCCP.png');
+}
+
+.sectionFinalSCCP {
+    background-image: url('./assets/imgs/BGFinalSCCP.png');
+}
+
+.sectionOneBGAPD {
+    background-image: url('./assets/imgs/BGFirstAPD.png');
+}
+
+.sectionFinalAPD {
+    background-image: url('./assets/imgs/BGFinalAPD.png');
+}
+
+.sectionTwoBoxClubes p {
+    text-align: justify;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+}
+
+.sectionTwoBox2Clubes {
+    display: flex;
+    margin-top: 10px;
+}
+
+.sectionTwoBox2Clubes p {
+    text-align: justify;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    padding-right: 10%;
+}
+
+.sectionTwoIMGClubes {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+
+.sectionTwoIMGClubes img {
+    border-radius: 10px;
+    width: 100%;
+    min-width: 390px;
+    max-width: 390px;
+    height: auto;
+    cursor: pointer;
+    transition: ease-in-out 0.3s all;
+}
+
+.sectionTwoIMGClubes p {
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: clamp(9px, 1.5vw, 11px);
+    font-weight: 200;
+    text-align: right;
+    margin-top: 10px;
+    padding-right: 0%;
+}
+
+.sectionTwoIMGClubes span {
+    font-family: "Inter", sans-serif;
+    color: #E34646;
+    font-size: clamp(9px, 1.5vw, 11px);
+    font-weight: 200;
+}
+
+.sectionThreeLine {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.sectionThreeClubes {
+    width: 100%;
+    height: auto;
+    padding: 8% 0;
+    background-color: #262626ab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionThreeContainerClubes {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  label {
+    margin-bottom: 20px;
+    color: white;
+    font-family: "IM Fell DW Pica SC", serif;
+    font-size: clamp(23px, 1.5vw, 26px);
+    font-weight: lighter;
+  }
+
+  label span {
+    color: #E34646;
+    font-family: "IM Fell DW Pica SC", serif;
+    font-size: clamp(23px, 1.5vw, 26px);
+  }
+
+  .sectionThreeBoxClubes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sectionThreeBoxClubes img {
+    width: 100%;
+    min-width: 180px;
+    height: auto;
+    margin-right: 5%;
+  }
+
+  .sectionThreeBoxClubes p {
+    color: white;
+    text-align: justify;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    color: rgb(192, 192, 192);
+    font-weight: 200;
+  }
+
+.sectionFourTitleClubes {
+    margin-bottom: 20px;
+}
+
+.sectionFourBoxClubes {
+    display: flex;
+}
+
+.sectionFourBoxClubes img {
+    width: 100%;
+    min-width: 420px;
+    max-width: 420px;
+    height: auto;
+    cursor: pointer;
+    transition: ease-in-out 0.3s all;
+}
+
+.sectionFourIMG p {
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: clamp(9px, 1.5vw, 11px);
+    font-weight: 200;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.sectionFourIMG span {
+    font-family: "Inter", sans-serif;
+    color: #E34646;
+    font-size: clamp(9px, 1.5vw, 11px);
+    font-weight: 200;
+}
+
+.sectionFourBoxClubes .sectionFourBoxText {
+    text-align: justify;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+    padding-left: 10%;
+}
+
+.sectionQuizContainer {
+    width: 35%;
+    margin: 0 auto;
+    height: 40vh;
+}
+
+.sectionQuizTitle {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sectionQuizContainer p, .sectionQuizContainer span {
+    color: white;
+    font-family: "IM Fell DW Pica SC", serif;
+    font-size: clamp(23px, 1.5vw, 26px);
+    font-weight: lighter;
+}
+
+.sectionQuizContainer span {
+    color: #E34646;
+    font-size: clamp(23px, 1.5vw, 26px);
+}
+
+.sectionQuizBox {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.sectionQuizQuestions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionQuizQuestions div:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.questionLabel {
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 19px);
+}
+
+.optionsLabel {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 18px);
+}
+
+.sectionQuizEndMessage {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-top: 20%;
+    text-align: center;
+}
+
+.sectionQuizEndMessage p {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(14px, 1.5vw, 19px);
+}
+
+.sectionQuizResultado {
+    margin-top: 5%;
+    text-align: center;
+}
+
+.sectionQuizResultado.correct {
+    color: green;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(13px, 1.5vw, 17px);
+    font-weight: 400;
+}
+
+.sectionQuizResultado.incorrect {
+    color: red;
+    font-family: "Inter", sans-serif;
+    font-size: clamp(13px, 1.5vw, 17px);
+    font-weight: 300;
+}
+
+.sectionFinalBoxClubes {
+    margin: 35% 0;
+}
+
+.sectionFinalTitleClubes {
+    text-align: center;
+    color: white;
+    font-family: "JetBrains Mono", monospace;
+    font-size: clamp(8px, 1.5vw, 13px);
+    font-weight: lighter;
+}
+
+.sectionFinalTextClubes {
+    text-align: center;
+    color: white;
+    font-family: "JetBrains Mono", monospace;
+    font-size: clamp(15px, 1.5vw, 20px);
+    font-weight: 200;
+}
+
+
+/* Media Queries */
+@media (hover:hover) and (pointer:fine) {
+    .headerNavMenu ul li a:hover {
+        color: #ebebeb;
+    }
+
+    .headerMenu a:hover,
+    .headerMenu img:hover {
+        transform: scale(1.1);
+    }
+
+    .headerNavMenuEscudos img:hover {
+        filter: saturate(100%);
+        scale: 1.1;
+    }
+
+    .sectionTwoIMG img:hover {
+        scale: 1.02;
+    }
+
+    .sectionThreeIMG img:hover {
+        scale: 1.02;
+    }
+
+    .manual-btn:hover { 
+        background-color: #E34646;
+    }    
+
+    .sectionFinalIcons a img:hover {
+        filter: saturate(90%);
+        scale: 1.1;
+    }
+
+    .footerIcons img:hover{
+        scale: 1.1;
+    }
+
+    /* Clubes */
+    .sectionTwoIMGClubes img:hover {
+        scale: 1.02;
+    }
+
+    .sectionThreeBoxClubes img:hover {
+        scale: 1.02;
+    }
+
+    .sectionFourBoxClubes img:hover {
+        scale: 1.02;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    /* Clubes */
+    .sectionTwoBox2Clubes {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .sectionTwoBox2Clubes p {
+        padding-right: 0%;
+    }
+
+    .sectionTwoIMGClubes {
+        margin: 5% 0;
+    }
+
+    .sectionTwoIMGClubes img {
+        min-width: 10px;
+        max-width: 400px;
+    }   
+
+    .sectionFourTitleClubes {
+        text-align: center;
+    }    
+
+    .sectionFourBoxClubes {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .sectionFourBoxClubes img {
+        min-width: 10px;
+        max-width: 390px;
+    }  
+
+    .sectionThreeContainerClubes {
+        width: 60%;
+      }
+
+    .sectionFourBoxClubes .sectionFourBoxText {
+        padding-left: 0%;
+    }
+
+    .sectionFourBoxClubes p {
+        margin-bottom: 5%;
+    }  
+}
+
+@media only screen and (max-width: 1024px) {
+    .sectionOne h1 {
+        font-size: clamp(22px, 1.5vw, 35px);
+    }
+
+    .sectionTwo {
+        max-width: 85%;
+    }
+
+    .sectionThree {
+        max-width: 85%;
+    }
+
+    .sectionFour {
+        max-width: 85%;
+    }
+
+    .sectionFourSlider {
+        width: 55vw;
+    }
+
+    .manual-navigation {
+        width: 55vw;
+        margin-top: -30px;
+    }
+
+    .sectionFinalContainer {
+        max-width: 85%;
+    }
+
+    .sectionFinalIcons a{
+        margin: 0 4vw;
+    }
+
+    /* Clubes */
+    .sectionFourBoxClubes img {
+        min-width: 10px;
+        max-width: 310px;
+    } 
+
+    .sectionQuizContainer {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .headerContainer {
+        height: 100px;
+    }
+
+    .headerNav {
+        width: 50vw;
+        right: -50vw;
+    }
+
+    .headerMenu img {
+        width: 34px;
+        height: 24px;
+    }
+
+    .sectionOneContainer {
+        flex-direction: column;
+        justify-content: center;
+        height: 65vh;
+    }
+
+    .sectionOne h1 {
+        text-align: center;
+        margin-left: 5px;
+        font-size: clamp(19px, 1.5vw, 32px);
+    }
+
+    .sectionTwo {
+        width: 80%;
+    }
+
+    .sectionTwoTitle {
+        text-align: center;
+    }
+    
+    .sectionTwoBox {
+        flex-direction: column-reverse;
+    }
+
+    .sectionTwoBox .sectionTwoText{
+        padding-right: 0;
+    }
+
+    .sectionTwoIMG {
+        align-items: center;
+        margin-bottom: 5%;
+    }
+
+    .sectionTwoIMG img {
+        min-width: 10px;
+        max-width: 100px;
+    }
+
+    .sectionThree {
+        width: 80%;
+    }
+
+    .sectionThreeTitle {
+        text-align: start;
+    }
+
+    .sectionThreeBox {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .sectionThreeIMG {
+        margin: 5% 0;
+    }
+
+    .sectionThreeBox img {
+        min-width: 10px;
+        max-width: 213px;
+    }
+
+    .sectionThreeTexts p, .sectionThreeTexts2 p{
+        padding-left: 0;
+    }
+
+    .sectionFour {
+        width: 80%;
+    }
+
+    .sectionFourSlider {
+        width: 70vw;
+        margin: 5% auto;
+    }
+
+    .manual-navigation {
+        width: 70vw;
+    }
+
+    .sectionFinalContainer {
+        width: 80%;
+    }
+
+    .sectionFinalIcons {
+        flex-direction: column;
+        margin: 100px 0;
+    }
+
+    .sectionFinalIcons a{
+        margin: 5vw 0;
+    }
+
+    .sectionFinalIcons a img {
+        width: 60px;
+    }    
+
+    /* Clubes */
+    .sectionTwoBox2Clubes {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .sectionThreeContainerClubes {
+        width: 80%;
+      }
+
+    .sectionTwoIMGClubes img {
+        min-width: 10px;
+        max-width: 250px;
+    }
+
+    .sectionThreeBoxClubes {
+        flex-direction: column;
+        margin: 20% 0;
+    }
+    
+
+    .sectionThreeBoxClubes img {
+        min-width: 10px;
+        max-width: 120px;
+    }
+
+    .sectionThreeBoxClubes img {
+        margin-right: 0%;
+      }
+    
+
+    .sectionThreeBoxClubes p {
+        /* margin-left: 0%; */
+        margin-top: 5%;
+      }
+    
+    .sectionFourBoxClubes img {
+        min-width: 10px;
+        max-width: 250px;
+    }
+
+    .sectionQuizContainer {
+        width: 70%;
+        height: 45vh;
+    }
+
+    .sectionQuizBox {
+        margin-top: 40px;
+    }
+
+    .sectionFinalBoxClubes {
+        margin: 45% 0;
+    }
+}
+
+@media only screen and (max-width: 345px) {
+    .sectionOne h1 {
+        margin-left: 5px;
+    }
+
+    .manual-btn {
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 240px) {
+    .headerNav {
+        width: 60vw;
+        right: -60vw;
+    }
+
+    .headerMax {
+        display: none;
+    }
+    
+    .headerMin {
+        display: block;
+    }
+
+    .headerNavMenu ul li i {
+        display: none;
+    }
+
+    .headerNavMenu ul li a {
+        font-size: clamp(10px, 1.5vw, 13px);
+    }
+}
